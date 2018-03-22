@@ -1,0 +1,39 @@
+body { 
+  background-image: url("https://thumbs.dreamstime.com/b/mesh-lines-repeatable-pattern-simple-geometric-texture-grid-straight-parallel-stripes-royalty-free-vector-84627354.jpg"); 
+  font-family: 'News Cycle', sans-serif;
+}
+.container {
+  background-color: #5D5B5B;
+}
+.top {
+  background-image: url("https://trupartnercu.org/wp-content/uploads/2015/03/01.jpg");
+  color: #000000;
+  padding-right: 100px;
+}
+#title{
+  font-weight: bold;
+  font-size: 55px;
+}
+.bold{
+  font-weight: bold;
+}
+.topPadding {
+  color: #DC143C;
+  padding-right: 100px;
+}
+.extraMargin{
+  margin: 10px;
+}
+textarea, input {
+  display: block;
+  width: 100%;
+  background-color: #DCDCDC;
+}
+input {
+  height: 36px;
+  font-size: 24px;
+}
+textarea {
+  height: 200px;
+  font-size: 18px;
+}
