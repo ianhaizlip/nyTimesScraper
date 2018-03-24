@@ -61,3 +61,12 @@ $(document).on("click", "#savenote", function() {
   $("#titleinput").val("");
   $("#bodyinput").val("");
 });
+
+
+$('#scrape').click(function(){
+  $.ajax({
+    method: "GET",
+    url: "/scrape"
+  })
+
+})
