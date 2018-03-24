@@ -24,6 +24,13 @@ mongoose.connect("mongodb://localhost/scraperhw", {
   useMongoClient: true
 });
 
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI, {
+  useMongoClient: true
+});
 // Routes
 
 // A GET route for scraping the website
