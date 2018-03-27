@@ -1,13 +1,15 @@
+$(document).ready(function(){
 // Grab the articles as a json
-$.getJSON("/articles", function(data) {
-  for (var i = 0; i < data.length; i++) {
-    $("#articles").append(`
-      <div class="card extraMargin"><div class="card-body article">
-      <p data-id="${data[i]._id}"><span class="bold"> ${data[i].title} </span><br/> ${data[i].link} </p>
-      <a type="button" class="btn btn-secondary noteButton" data-id="${data[i]._id}">Note</a>
-      </div></div>`);
-  }
-});
+
+  $.getJSON("/articles", function(data) {
+    for (var i = 0; i < data.length; i++) {
+      $("#articles").append(`
+        <div class="card extraMargin"><div class="card-body article">
+        <p data-id="${data[i]._id}"><span class="bold"> ${data[i].title} </span><br/> ${data[i].link} </p>
+        <a type="button" class="btn btn-secondary noteButton" data-id="${data[i]._id}">Note</a>
+        </div></div>`);
+    }
+  });
 
 //$('.noteButton').on("click", function() {
 
@@ -73,3 +75,5 @@ $('#scrape').click(function(){
     console.log('scraped');
   })
 })
+
+});
