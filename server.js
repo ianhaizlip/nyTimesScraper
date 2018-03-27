@@ -19,21 +19,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/scraperhw";
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/scraperhw", {
-  useMongoClient: true
-});
+mongoose.connect("mongodb://localhost/scraperhw");
 
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
-
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI, {
-  useMongoClient: true
-});
 // Routes
 
+app.get("/", function(req, res){
+  res.send('./public/index.html')
+});
+
 // A GET route for scraping the website
+
 app.get("/scrape", function(req, res) {
   // grab the html with request
   axios.get("http://www.nytimes.com/").then(function(response) {
@@ -52,6 +50,7 @@ app.get("/scrape", function(req, res) {
         .attr("href");
 
       // Create a new Article using result
+      console.log(result);
       db.Article.create(result)
         .then(function(dbArticle) {
           console.log(dbArticle);
@@ -61,9 +60,11 @@ app.get("/scrape", function(req, res) {
         });
     });
 
-    res.send("Scrape Complete");
+    // res.send("Scrape Complete");
+    res.sendFile('./public/index.html');
   });
 });
+
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {

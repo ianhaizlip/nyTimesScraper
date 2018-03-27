@@ -12,10 +12,11 @@ $.getJSON("/articles", function(data) {
 //$('.noteButton').on("click", function() {
 
 // Whenever someone clicks a p tag
-$(document).click(".noteButton", function() {
-  console.log('click');
+$(document).on('click',".noteButton", function() {
+  console.log('click', this);
   $("#notes").empty();
   var thisId = $(this).attr("data-id");
+  console.log(thisId);
 
   // ajax call for the Article
   $.ajax({
@@ -67,6 +68,8 @@ $('#scrape').click(function(){
   $.ajax({
     method: "GET",
     url: "/scrape"
+  }).then(function(req, res){
+    window.location.assign(window.location.href);
+    console.log('scraped');
   })
-
 })
